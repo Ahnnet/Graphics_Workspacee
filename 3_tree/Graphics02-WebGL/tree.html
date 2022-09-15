@@ -13,11 +13,12 @@ main()
 
 <script id="fragment-shader" type="x-shader/x-fragment">
 precision mediump float;
+uniform vec4 vColors;
 
 void
 main()
 {
-    gl_FragColor = vec4( 0.66, 0.32, 0.0, 1.0 );
+    gl_FragColor = vColors;
 }
 </script>
 

@@ -43,6 +43,8 @@ window.onload = function init()
     var program = initShaders( gl, "vertex-shader", "fragment-shader" );
     gl.useProgram( program );
 
+    var colorLoc = gl.getUniformLocation(program, "vColors");
+
     // Load the data into the GPU
 
     var bufferId = gl.createBuffer();
@@ -50,17 +52,16 @@ window.onload = function init()
     gl.bufferData( gl.ARRAY_BUFFER,flatten(vertices), gl.STATIC_DRAW );
 
     // Associate vertex data buffer with shader variables
-
     var vPosition = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
-    render();
-};
-
-
-function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
+    //draw leaves
+    gl.uniform4fv(colorLoc, [0.0, 1.0, 0.0, 1.0]);
     gl.drawArrays( gl.TRIANGLE_STRIP, 0, 11 );
+
+    //draw wood
+    gl.uniform4fv(colorLoc, [0.66, 0.32, 0.0, 1.0]);
     gl.drawArrays(gl.TRIANGLE_FAN, 11, 4 );
-}
+};
