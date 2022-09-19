@@ -10,7 +10,7 @@ window.onload = function init()
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
     gl.viewport( 0, 0, canvas.width, canvas.height );   //canvas 넓이 재정의
-    gl.clearColor(0.0, 0.2, 0.5, 1.0 );    //배경색 지정
+    gl.clearColor(0.0, 0.2, 0.5, 1.0 );    //배경색 지정 //남색
 
     //  Load shaders and initialize attribute buffers
 
@@ -19,9 +19,7 @@ window.onload = function init()
 
     //  Configure WebGL
         // vertex
-    var vertices = [
-        vec2(-0.5, 0.5)
-    ]
+
 
         // color
     var colors = [
@@ -85,13 +83,11 @@ window.onload = function init()
 
     //     gl.drawArrays(gl.TRIANGLES, 0, 3);
     // }
-
-
-    
-
-
-    render();
 };
+
+function randomInt(range){
+    return Math.floor(Math.random()*range);
+}
 
 function setMountain(gl, x, y, h){
     x1 = x;
@@ -111,10 +107,4 @@ function setStar(){
 
 function setCloud(){
 
-}
-
-
-function render() {
-    gl.clear( gl.COLOR_BUFFER_BIT );
-    gl.drawArrays( gl.TRIANGLE_FAN, 0, 4 );
 }
