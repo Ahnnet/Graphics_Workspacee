@@ -1,7 +1,7 @@
 var points = [];
 var colors = [];
 
-var NumTimesToSubdivide = 2;
+var NumTimesToSubdivide = 0;
 
 window.onload = function init() {
     var canvas = document.getElementById("gl-canvas");
@@ -28,6 +28,8 @@ window.onload = function init() {
     var program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
 
+    ///////////////
+
     var cBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
@@ -35,6 +37,8 @@ window.onload = function init() {
     var vColor = gl.getAttribLocation(program, "vColor");
     gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(vColor);
+
+    ///////////////
 
     var vBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer);

@@ -44,6 +44,10 @@ window.onload = function init()
         
         gl.uniform4f(fColor, Math.random(), Math.random(), Math.random(), 1);
 
+        // var method = gl.TRIANGLES
+        // var str = 0;
+        // var offset = 6;
+
         gl.drawArrays(gl.TRIANGLES, 0, 6);
 
     }
