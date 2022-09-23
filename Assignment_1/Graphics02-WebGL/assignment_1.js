@@ -65,24 +65,24 @@ window.onload = function init()
     }
 
 
-    // // Pentagon (star)
-    // for(var i=0; i<4; ++i){
-    //     setStar();
+    // Pentagon (star)
+    for(var i=0; i<4; ++i){
+        setStar();
 
-    //     gl.uniform2f(vResolution, gl.canvas.width, gl.canvas.height);
+        gl.uniform2f(vResolution, gl.canvas.width, gl.canvas.height);
 
-    //     gl.drawArrays(gl.TRIANGLES, 0, 3);
-    // }
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
 
 
-    // // Hexagon (cloud)
-    // for(var i=0; i<3; ++i){
-    //     setCloud();
+    // Hexagon (cloud)
+    for(var i=0; i<3; ++i){
+        setCloud();
 
-    //     gl.uniform2f(vResolution, gl.canvas.width, gl.canvas.height);
+        gl.uniform2f(vResolution, gl.canvas.width, gl.canvas.height);
 
-    //     gl.drawArrays(gl.TRIANGLES, 0, 3);
-    // }
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
 };
 
 function randomInt(range){
