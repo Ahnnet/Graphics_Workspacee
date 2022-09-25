@@ -52,7 +52,7 @@ window.onload = function init()
 
     var colors = gl.getUniformLocation(program, "colors");
     
-    gl.uniform4fv( colors, [0.0, 1.0, 0.0]);
+    gl.uniform4fv( colors, [0.0, 1.0, 0.0, 1.0]);
     mountains();
 
     // gl.uniform4fv( colors, [0.0, 1.0, 0.0]);

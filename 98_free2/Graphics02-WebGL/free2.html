@@ -3,14 +3,14 @@
 <head>
 <script id="vertex-shader" type="x-shader/x-vertex">
 attribute vec4 vPosition;
-uniform vec3 colors;
+uniform vec4 colors;
 varying vec4 fColor;
 
 void
 main()
 {
     gl_Position = vPosition;
-    fColor = vec4(colors, 1.0);
+    fColor = colors;
 }
 </script>
 
