@@ -9,12 +9,10 @@ window.onload = function init()
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
+    gl.viewport( 0, 0, canvas.width, canvas.height );   //canvas 넓이 재정의
+    gl.clearColor( 0.0, 0.0, 0.0, 1.0 );    //배경색 지정
 
-    //var vertices = new Float32Array([vec2(-1, -1), vec2(0, 1), vec2(1, -1)]);
-	  // var vertices = [ vec2(-1,-1), vec2(0,1), vec2(1,-1)];
     //  Configure WebGL
-    
-    // var vertices = new Float32Array([-1, -1, -0.5, 1, 0, -1, 0, -1, 0.5, 1, 1, -1 ]);
     var vertices = [
         vec2(-1.0, -1.0),
         vec2(-0.5, 0.0),
@@ -28,9 +26,6 @@ window.onload = function init()
         vec2(1.0, 0.3),
         vec2(1.0, -1.0)
     ]
-
-    gl.viewport( 0, 0, canvas.width, canvas.height );   //canvas 넓이 재정의
-    gl.clearColor( 0.0, 0.2, 0.5, 1.0 );    //배경색 지정
 
     //  Load shaders and initialize attribute buffers
 
@@ -56,6 +51,4 @@ window.onload = function init()
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
     gl.drawArrays( gl.TRIANGLES, 0, 3 );
-    gl.drawArrays( gl.TRIANGLES, 3, 3 );
-    gl.drawArrays( gl.TRIANGLES, 6, 3 );
 }

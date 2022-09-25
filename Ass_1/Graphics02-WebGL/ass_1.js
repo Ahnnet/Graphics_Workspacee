@@ -22,26 +22,22 @@ window.onload = function init()
 
 
         // color
-    var colors = [
+    var vColor = [
         vec3(1.0, 1.0, 1.0), //w
         vec3(0.0, 1.0, 0.0), //g
         vec3(1.0, 1.0, 0.0) //y
     ];
 
+    
     // Load the data into the GPU
     // vColor
-
     var cBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, flatten(vColor), gl.STATIC_DRAW);
 
-    var vColor = getAttribLocation(program, "vColor");
+    var vColor = getUniformLocation(program, "vColor");
     gl.vertexAttribPointer(vColor, 3, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(vColor);
-
-
-    // vResolution
-    var vResolution = gl.getUniformLocation(program, "vResolution");
+    gl.uniform3f(vColor);
 
 
     // Load the data into the GPU
