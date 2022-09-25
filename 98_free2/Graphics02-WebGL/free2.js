@@ -16,17 +16,20 @@ window.onload = function init()
     
     // var vertices = new Float32Array([-1, -1, -0.5, 1, 0, -1, 0, -1, 0.5, 1, 1, -1 ]);
     var vertices = [
+        // m1
         vec2(-1.0, -1.0),
         vec2(-0.5, 0.0),
         vec2(0.0, -1.0),
-
+        // m2
         vec2(-0.5, -1.0),
         vec2(0.0, -0.5),
         vec2(0.5, -1.0),
-
+        // m3
         vec2(0.5, -1.0),
         vec2(1.0, 0.3),
         vec2(1.0, -1.0)
+        
+
     ]
 
     gl.viewport( 0, 0, canvas.width, canvas.height );   //canvas 넓이 재정의
@@ -42,20 +45,35 @@ window.onload = function init()
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
     gl.bufferData( gl.ARRAY_BUFFER,flatten(vertices), gl.STATIC_DRAW );
-
-    // Associate vertex data buffer with shader variables
-
     var vPosition = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
-    render();
+
+    var colors = gl.getUniformLocation(program, "colors");
+    
+    gl.uniform4fv( colors, [0.0, 1.0, 0.0]);
+    mountains();
+
+    // gl.uniform4fv( colors, [0.0, 1.0, 0.0]);
+    // clouds();
+
+    // gl.uniform4fv( colors, [0.0, 1.0, 0.0]);
+    // stars();
 };
 
 
-function render() {
+function mountains() {
     gl.clear( gl.COLOR_BUFFER_BIT );
     gl.drawArrays( gl.TRIANGLES, 0, 3 );
     gl.drawArrays( gl.TRIANGLES, 3, 3 );
     gl.drawArrays( gl.TRIANGLES, 6, 3 );
 }
+
+// function clouds() {
+
+// }
+
+// function stars() {
+
+// }
