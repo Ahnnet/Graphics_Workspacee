@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <script id="vertex-shader" type="x-shader/x-vertex">
@@ -5,19 +6,20 @@
 attribute  vec4 vPosition;
 attribute  vec4 vColor;
 varying vec4 fColor;
-uniform mat4 modelViewMatrix;
 
-void main() 
+uniform mat4 modelView;
+
+void main()
 {
+    gl_Position = modelView*vPosition;
     fColor = vColor;
-    gl_Position = modelViewMatrix * vPosition;
-} 
+}
 </script>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
 
 precision mediump float;
-   
+
 varying vec4 fColor;
 
 void
@@ -30,18 +32,25 @@ main()
 <script type="text/javascript" src="../Common/webgl-utils.js"></script>
 <script type="text/javascript" src="../Common/initShaders.js"></script>
 <script type="text/javascript" src="../Common/MV.js"></script>
-<script type="text/javascript" src="cube_ctm.js"></script>
+<script type="text/javascript" src="geometry.js"></script>
+<script type="text/javascript" src="lookAt.js"></script>
 
 <body>
 
-
-
 <br>201735852_안형진</br>
+
 <canvas id="gl-canvas" width="512" height="512">
 Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
 
-<button id= "Execute">Rotate X</button>
+<br/>
+
+<button id= "Button1">increase R</button>
+<button id= "Button2">decrease R</button>
+<button id= "Button3">increase theta</button>
+<button id= "Button4">decrease theta</button>
+<button id= "Button5">increase phi</button>
+<button id= "Button6">decrease phi</button>
 
 </body>
 </html>

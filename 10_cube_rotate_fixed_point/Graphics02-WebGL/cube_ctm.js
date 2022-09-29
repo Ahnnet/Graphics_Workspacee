@@ -3,7 +3,6 @@ var canvas;
 var gl;
 
 var NumVertices  = 36;
-var rot = 60.0
 
 var points = [];
 var colors = [];
@@ -124,7 +123,7 @@ function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    theta[zAxis] += rot;    //rotate about z-axis
+    theta[zAxis] += 2;    //rotate about z-axis
     
    ctm = mat4();
 
@@ -140,5 +139,5 @@ function render()
 
     gl.drawArrays( gl.TRIANGLES, 0, NumVertices );
 
-    // requestAnimFrame( render );
+    requestAnimFrame( render );
 }
