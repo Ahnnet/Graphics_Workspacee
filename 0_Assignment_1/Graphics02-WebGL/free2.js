@@ -11,15 +11,17 @@ window.onload = function init()
 
     // vertices
     var vertices = [
-        // m1
+        // mountain 1
         vec2(-1.0, -1.0),
         vec2(-0.5, 0.0),
         vec2(0.0, -1.0),
-        // m2
+
+        // mountain 2
         vec2(-0.5, -1.0),
         vec2(0.0, -0.5),
         vec2(0.5, -1.0),
-        // m3
+        
+        // mountain 3
         vec2(0.5, -1.0),
         vec2(1.0, 0.3),
         vec2(1.0, -1.0),
@@ -158,13 +160,15 @@ window.onload = function init()
 
     var colors = gl.getUniformLocation(program, "colors");
 
-    //draw moutain with green color
+    //draw moutain with dark green color
     gl.uniform3fv( colors, [0.0, 0.64, 0.0]);
     mountains();
 
+    //draw moutain with light green color
     gl.uniform3fv( colors, [0.0, 1.0, 0.5]);
     mountains2();
 
+    //draw moutain with bright green color
     gl.uniform3fv( colors, [0.8, 1.0, 0.0]);
     mountains3();
 
@@ -172,14 +176,18 @@ window.onload = function init()
     gl.uniform3fv( colors, [1.0, 1.0, 1.0]);
     clouds();
     
-    //draw stars with yellow color
+    //draw clouds with skyblue color
+    gl.uniform3fv( colors, [0.7, 1.0, 1.0]);
+    clouds2();
+
+    //draw stars with orange color
     gl.uniform3fv( colors, [1.0, 0.8, 0.3]);
     giant();
 
     //draw giant with yellow color
     gl.uniform3fv( colors, [1.0, 1.0, 0.0]);
     stars();
-
+    //draw giant with coral color
     gl.uniform3fv( colors, [1.0, 0.7, 0.5]);
     stars2();
 };
@@ -188,8 +196,6 @@ window.onload = function init()
 function mountains() {
     gl.clear( gl.COLOR_BUFFER_BIT );
     gl.drawArrays( gl.TRIANGLES, 0, 3 );
-    // gl.drawArrays( gl.TRIANGLES, 3, 3 );
-    // gl.drawArrays( gl.TRIANGLES, 6, 3 );
 }
 
 function mountains2(){
@@ -203,6 +209,9 @@ function mountains3(){
 function clouds() {
     gl.drawArrays( gl.TRIANGLE_FAN, 9, 8);
     gl.drawArrays( gl.TRIANGLE_FAN, 17, 8);
+}
+
+function clouds2() {
     gl.drawArrays( gl.TRIANGLE_FAN, 25, 8);
 }
 
@@ -211,9 +220,6 @@ function stars() {
     gl.drawArrays( gl.TRIANGLE_FAN, 39, 6);
     gl.drawArrays( gl.TRIANGLE_FAN, 45, 6);
     gl.drawArrays( gl.TRIANGLE_FAN, 51, 6);
-    // gl.drawArrays( gl.TRIANGLE_FAN, 57, 6);
-    // gl.drawArrays( gl.TRIANGLE_FAN, 63, 6);
-    // gl.drawArrays( gl.TRIANGLE_FAN, 69, 6);
 }
 
 function stars2() {
