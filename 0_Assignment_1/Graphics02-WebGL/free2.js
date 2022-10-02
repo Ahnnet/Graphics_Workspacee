@@ -92,8 +92,51 @@ window.onload = function init()
         vec2(-0.35,0.15),
         vec2(-0.4,0.2),
         vec2(-0.45,0.15),
-        vec2(-0.4,0.1)
+        vec2(-0.4,0.1),
+        
+        // star 6
+        vec2(0.4,0.6),
+        vec2(0.4,0.55),
+        vec2(0.45,0.6),
+        vec2(0.4,0.65),
+        vec2(0.35,0.6),
+        vec2(0.4,0.55),
 
+        // star 7
+        vec2(-0.35,0.5),
+        vec2(-0.35,0.45),
+        vec2(-0.4,0.5),
+        vec2(-0.35,0.55),
+        vec2(-0.3,0.5),
+        vec2(-0.35,0.45),
+
+        // giant 1
+        vec2(0.3,0.75),
+        vec2(0.18,0.55),
+        vec2(0.42,0.55),
+
+        vec2(0.18,0.7),
+        vec2(0.3,0.5),
+        vec2(0.42,0.7),
+
+        // giant 2
+        vec2(-0.8,0.3),
+        vec2(-0.92,0.15),
+        vec2(-0.68,0.15),
+
+        vec2(-0.92,0.25),
+        vec2(-0.8,0.1),
+        vec2(-0.68,0.25),
+
+        // giant 3
+        vec2(0.6, -0.15),
+        vec2(0.48,-0.3),
+        vec2(0.72,-0.3),
+
+        vec2(0.48,-0.2),
+        vec2(0.6,-0.35),
+        vec2(0.72,-0.2),
+        
     ];
 
     gl.viewport( 0, 0, canvas.width, canvas.height );   //canvas 넓이 재정의
@@ -116,25 +159,45 @@ window.onload = function init()
     var colors = gl.getUniformLocation(program, "colors");
 
     //draw moutain with green color
-    gl.uniform3fv( colors, [0.0, 1.0, 0.0]);
+    gl.uniform3fv( colors, [0.0, 0.64, 0.0]);
     mountains();
+
+    gl.uniform3fv( colors, [0.0, 1.0, 0.5]);
+    mountains2();
+
+    gl.uniform3fv( colors, [0.8, 1.0, 0.0]);
+    mountains3();
 
     //draw clouds with white color
     gl.uniform3fv( colors, [1.0, 1.0, 1.0]);
     clouds();
     
     //draw stars with yellow color
+    gl.uniform3fv( colors, [1.0, 0.8, 0.3]);
+    giant();
+
+    //draw giant with yellow color
     gl.uniform3fv( colors, [1.0, 1.0, 0.0]);
     stars();
+
+    gl.uniform3fv( colors, [1.0, 0.7, 0.5]);
+    stars2();
 };
 
 
 function mountains() {
     gl.clear( gl.COLOR_BUFFER_BIT );
     gl.drawArrays( gl.TRIANGLES, 0, 3 );
-    gl.drawArrays( gl.TRIANGLES, 3, 3 );
-    gl.drawArrays( gl.TRIANGLES, 6, 3 );
+    // gl.drawArrays( gl.TRIANGLES, 3, 3 );
+    // gl.drawArrays( gl.TRIANGLES, 6, 3 );
+}
 
+function mountains2(){
+    gl.drawArrays( gl.TRIANGLES, 3, 3 );
+}
+
+function mountains3(){
+    gl.drawArrays( gl.TRIANGLES, 6, 3 );
 }
 
 function clouds() {
@@ -148,5 +211,22 @@ function stars() {
     gl.drawArrays( gl.TRIANGLE_FAN, 39, 6);
     gl.drawArrays( gl.TRIANGLE_FAN, 45, 6);
     gl.drawArrays( gl.TRIANGLE_FAN, 51, 6);
+    // gl.drawArrays( gl.TRIANGLE_FAN, 57, 6);
+    // gl.drawArrays( gl.TRIANGLE_FAN, 63, 6);
+    // gl.drawArrays( gl.TRIANGLE_FAN, 69, 6);
+}
+
+function stars2() {
     gl.drawArrays( gl.TRIANGLE_FAN, 57, 6);
+    gl.drawArrays( gl.TRIANGLE_FAN, 63, 6);
+    gl.drawArrays( gl.TRIANGLE_FAN, 69, 6);
+}
+
+function giant(){
+    gl.drawArrays(gl.TRIANGLES,75,3);
+    gl.drawArrays(gl.TRIANGLES,78,3);
+    gl.drawArrays(gl.TRIANGLES,81,3);
+    gl.drawArrays(gl.TRIANGLES,84,3);
+    gl.drawArrays(gl.TRIANGLES,87,3);
+    gl.drawArrays(gl.TRIANGLES,90,3);
 }
