@@ -3,15 +3,17 @@
     <head>
         <script id="vertex-shader" type="x-shader/x-vertex">
             attribute vec4 vPosition;
-            uniform vec3 vColor;
+            uniform vec3 colors;
             varying vec4 fColor;
 
             void main(){
                 gl_Position = vPosition;
+                fColor = vec4(colors, 1.0);
             }
         </script>
 
         <script id="fragment-shader" type="x-shader/x-fragment">
+            precision mediump float;
             varying vec4 fColor;
 
             void main(){
@@ -25,6 +27,6 @@
         <script type="text/javascript" src="webglFrame.js"></script>
     </head>
     <body>
-        <canvas id="gl-canvas" width="512" height="512"></canvas>
+        <canvas id="gl-canvas" width="512" height="512">asdf</canvas>
     </body>
 </html>
