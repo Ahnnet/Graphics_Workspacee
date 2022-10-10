@@ -1,6 +1,7 @@
 
 var gl;
 var points;
+var colors;
 
 window.onload = function init()
 {
@@ -158,7 +159,24 @@ window.onload = function init()
     gl.enableVertexAttribArray( vPosition );
 
 
-    var colors = gl.getUniformLocation(program, "colors");
+    colors = gl.getUniformLocation(program, "colors");
+
+    var slider = document.getElementById("slider").addEventListener("onChange", trans);
+
+    function trans();
+
+
+    // document.getElementById("slider").onChange = function(event){
+    //     // delay = event.srcElement.value;
+    //     clearInterval(intervalId);
+    //     intervalId = setInterval(render,10);
+    //     // render();
+    // }
+
+    // render();
+};
+
+function render(){
 
     //draw moutain with dark green color
     gl.uniform3fv( colors, [0.0, 0.64, 0.0]);
@@ -190,7 +208,8 @@ window.onload = function init()
     //draw giant with coral color
     gl.uniform3fv( colors, [1.0, 0.7, 0.5]);
     stars2();
-};
+
+}
 
 
 function mountains() {
