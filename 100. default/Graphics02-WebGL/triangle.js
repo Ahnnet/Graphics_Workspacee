@@ -35,17 +35,15 @@ window.onload = function init()
     gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition );
 
+/////
+    gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);
+
 //////////////////////////////////////
-
-    document.getElementById("slider").onChange = function(event){
-        var x = event.srcElement.value;
+    var slide = document.getElementById("slider");
+    slide.onChange = function(){
+        var x = slide.value;
+        
     }
-
-    var x = 10;
-    console.log(x);
-
-
-
 
 //////////////////////////////////////
 
