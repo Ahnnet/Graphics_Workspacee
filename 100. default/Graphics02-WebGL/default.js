@@ -9,11 +9,8 @@ window.onload = function init()
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" ); }
 
-
-    //var vertices = new Float32Array([vec2(-1, -1), vec2(0, 1), vec2(1, -1)]);
-	  // var vertices = [ vec2(-1,-1), vec2(0,1), vec2(1,-1)];
     //  Configure WebGL
-    var vertices = new Float32Array([-0.5, -0.5, 0, 0.5, 0.5, -0.5]);
+    var vertices = [-0.5, -0.5, 0, 0.5, 0.5, -0.5];
 
     gl.viewport( 0, 0, canvas.width, canvas.height );
     gl.clearColor( 0.0, 0.0, 0.0, 1.0 );
@@ -27,7 +24,7 @@ window.onload = function init()
 
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
-    gl.bufferData( gl.ARRAY_BUFFER,vertices, gl.STATIC_DRAW );
+    gl.bufferData( gl.ARRAY_BUFFER,flatten(vertices), gl.STATIC_DRAW );
 
     // Associate vertex data buffer with shader variables
 
@@ -36,14 +33,11 @@ window.onload = function init()
     gl.enableVertexAttribArray( vPosition );
 
 /////
-    gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);
+    // gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);
 
 //////////////////////////////////////
-    var slide = document.getElementById("slider");
-    slide.onChange = function(){
-        var x = slide.value;
-        
-    }
+
+
 
 //////////////////////////////////////
 

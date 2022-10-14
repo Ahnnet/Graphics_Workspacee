@@ -2,14 +2,13 @@
 <html>
 <head>
 <script id="vertex-shader" type="x-shader/x-vertex">
-attribute vec2 vPosition;
-uniform vec2 resolusion;
-uniform vec2 transform;
+attribute vec4 vPosition;
+
 
 void
 main()
 {
-    vec2 position = vPosition + resolusion   
+    
     gl_Position = vPosition;
 }
 </script>
@@ -27,16 +26,19 @@ main()
 <script type="text/javascript" src="../Common/webgl-utils.js"></script>
 <script type="text/javascript" src="../Common/initShaders.js"></script>
 <script type="text/javascript" src="../Common/MV.js"></script>
-<script type="text/javascript" src="triangle.js"></script>
+<script type="text/javascript" src="default.js"></script>
 </head>
 
 <body>
 <canvas id="gl-canvas" width="512" height="512">
 Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
-<div>
-    delay 0<input id="slider" type="range" min="0" max="100" step="10" value="50"/>
-100</div>
+
+<button id= "btnRight">RIGHT</button>
+<button id= "btnLeft">LEFT</button>
+
+
+
 <br id = "txt">201735852_안형진</br>
 </body>
 </html>
