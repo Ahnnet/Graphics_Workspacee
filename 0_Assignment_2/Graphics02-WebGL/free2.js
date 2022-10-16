@@ -1,12 +1,14 @@
-
 var gl;
 var points;
 var colors;
 
+var modelViewMatrix;
 var flag=0;
-var trans = 0;
+var cloud_trans=0;
+var star_trans=0;
 var ctm;
 var ctm2;
+var ctm3;
 
 window.onload = function init()
 {
@@ -143,7 +145,7 @@ window.onload = function init()
 
         vec2(0.48,-0.2),
         vec2(0.6,-0.35),
-        vec2(0.72,-0.2),
+        vec2(0.72,-0.2)
         
     ];
 
@@ -166,88 +168,77 @@ window.onload = function init()
 
     colors = gl.getUniformLocation(program, "colors");
 
-
     modelViewMatrixLoc = gl.getUniformLocation(program, "modelViewMatrix");
 
-    document.getElementById("btnRight").onclick = function(){
+    document.getElementById("btnRight").onclick=function(){
         flag = 1;
         render();
     }
-
-    document.getElementById("btnLeft").onclick = function(){
+    document.getElementById("btnLeft").onclick=function(){
         flag = -1;
         render();
     }
-
     render();
 
-
-    // document.getElementById("slider").onChange = function(event){
-    //     // delay = event.srcElement.value;
-    //     clearInterval(intervalId);
-    //     intervalId = setInterval(render,10);
-    //     // render();
-    // }
-
-    // render();
 };
 
 function render(){
+    gl.clear( gl.COLOR_BUFFER_BIT );
 
-    trasn+=0.002*flag;
+    cloud_trans+=0.002*flag;
+    star_trans+=0.0005*flag;
 
     ctm = mat4();
-    ctm = mult(ctm, translate(trans, 0.0, 0.0, 0.0));
+    ctm = mult(ctm, translate(cloud_trans, 0.0, 0.0, 0.0));
     ctm2 = mat4();
-    ctm2 = mult(ctm2, translate(0.0,0.0,0.0,0.0));
-    
+    ctm2 = mult(ctm2, translate(star_trans,star_trans*0.5,0.0,0.0));
+    ctm3 = mat4();
+    ctm3 = mult(ctm3, translate(0.0,0.0,0.0,0.0));
 
     //draw moutain with dark green color
     gl.uniform3fv( colors, [0.0, 0.64, 0.0]);
-    // gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm2));
+    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm3));
     mountains();
 
     //draw moutain with light green color
     gl.uniform3fv( colors, [0.0, 1.0, 0.5]);
-    // gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm2));
+    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm3));
     mountains2();
 
     //draw moutain with bright green color
     gl.uniform3fv( colors, [0.8, 1.0, 0.0]);
-    // gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm2));
+    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm3));
     mountains3();
 
     //draw clouds with white color
     gl.uniform3fv( colors, [1.0, 1.0, 1.0]);
-    // gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm));
+    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm));
     clouds();
     
     //draw clouds with skyblue color
     gl.uniform3fv( colors, [0.7, 1.0, 1.0]);
-    // gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm));
+    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm));
     clouds2();
 
     //draw stars with orange color
     gl.uniform3fv( colors, [1.0, 0.8, 0.3]);
-    // gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm2));
+    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm2));
     giant();
 
     //draw giant with yellow color
     gl.uniform3fv( colors, [1.0, 1.0, 0.0]);
-    // gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm2));
+    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm3));
     stars();
     //draw giant with coral color
     gl.uniform3fv( colors, [1.0, 0.7, 0.5]);
-    // gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm2));
+    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm3));
     stars2();
 
     requestAnimationFrame(render);
-
 }
 
 
 function mountains() {
-    gl.clear( gl.COLOR_BUFFER_BIT );
     gl.drawArrays( gl.TRIANGLES, 0, 3 );
 }
 

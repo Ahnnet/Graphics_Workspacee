@@ -5,6 +5,7 @@
 attribute vec4 vPosition;
 uniform vec3 colors;
 varying vec4 fColor;
+uniform mat4 modelViewMatrix;
 
 void
 main()
@@ -37,9 +38,8 @@ main()
 Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
 
-<div>
-    delay 0<input id="slider" type="range" min="0" max="100" step="10" value="50"/>
-100</div>
+<button id= "btnRight">RIGHT</button>
+<button id= "btnLeft">LEFT</button>
 
 </body>
 </html>

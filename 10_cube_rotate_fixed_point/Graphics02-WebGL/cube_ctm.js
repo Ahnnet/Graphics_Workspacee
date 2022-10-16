@@ -98,7 +98,7 @@ function quad(a, b, c, d)
         [ 0.0, 1.0, 1.0, 1.0 ],  // cyan
         [ 1.0, 1.0, 1.0, 1.0 ]   // white
     ];
-
+ 
     // We need to parition the quad into two triangles in order for
     // WebGL to be able to render it.  In this case, we create two
     // triangles from the quad indices
@@ -107,7 +107,7 @@ function quad(a, b, c, d)
     
     var indices = [ a, b, c, a, c, d ]; // 1 0 3, 1 3 2 // 4 5 6, 4 6 7
 
-   console.log(indices)
+   console.log(indices);
 
     for ( var i = 0; i < indices.length; ++i ) {
         points.push( vertices[indices[i]] );
@@ -127,13 +127,13 @@ function render()
     
    ctm = mat4();
 
-    ctm = mult(ctm, translate(-0.5, -0.5, -0.5, 1.0))  // translation to initial location (verticies[4])
+    ctm = mult(ctm, translate(-0.5, -0.5, -0.5, 1.0));  // translation to initial location (verticies[4])
 
    ctm = mult(ctm, rotate(theta[zAxis], 0, 0, 1)); // rotateZ
     ctm = mult(ctm, rotate(theta[yAxis], 0, 1, 0)); // rotateY
    ctm = mult(ctm, rotate(theta[xAxis], 1, 0, 0)); // rotateX
 
-    ctm = mult(ctm, translate(0.5, 0.5, 0.5, 1.0))  // translation to (0,0,0)
+    ctm = mult(ctm, translate(0.5, 0.5, 0.5, 1.0));  // translation to (0,0,0)
 
    gl.uniformMatrix4fv(modelViewMatrixLoc, false, flatten(ctm));
 
